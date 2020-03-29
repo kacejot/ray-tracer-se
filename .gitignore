@@ -1,3 +1,10 @@
+### User defined
+
+.vscode
+build
+
+### Generated
+
 # Prerequisites
 *.d
 
