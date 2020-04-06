@@ -1,3 +1,6 @@
-project(ray-tracer)
+cmake_minimum_required(VERSION 3.15)
 
-add_executable(${PROJECT_NAME} main.cpp)
+project(ray-tracer)
+file (GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
+include_directories(${PROJECT_SOURCE_DIR}/external/glm)
+add_executable(${PROJECT_NAME} ${SOURCES})
