@@ -1,5 +1,8 @@
 #pragma once
 
+#include <glm/geometric.hpp>
+#include <glm/vec3.hpp>
+
 #include "ray.h"
 
 struct hit_record {
