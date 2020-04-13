@@ -1,20 +1,14 @@
 #pragma once
 
 #include "material.h"
+#include "vec3.h"
 
-class metal : public material {
-    public:
-        metal(const glm::vec3& a) : albedo(a) {}
+namespace materials {
+    struct metal : public material {
+        vec3 albedo;
 
-        virtual bool scatter(
-            const ray& r_in, const hit_record& rec, glm::vec3& attenuation, ray& scattered
-        ) const override {
-            glm::vec3 reflected = reflect(r_in.direction, rec.normal);
-            scattered = ray{rec.p, reflected};
-            attenuation = albedo;
-            return (glm::dot(scattered.direction, rec.normal) > 0);
-        }
+        metal(const vec3& a) : albedo(a) {}
 
-    public:
-        glm::vec3 albedo;
-};
+        bool scatter(const ray& r_in, const hit_record& rec, vec3& attenuation, ray& scattered) const override;
+    };
+}

@@ -9,26 +9,29 @@
 #include "camera.h"
 
 int main() {
+    using materials::lambertian;
+    using materials::metal;
+
     std::ofstream file;
     file.open("image.ppm");
 
     hittable_list world;
 
     world.add(std::make_shared<sphere>(
-        glm::vec3{0, 0, -1}, 0.5,
-        std::make_shared<lambertian>(glm::vec3{0.7, 0.3, 0.3})));
+        glm::vec3{0.0f, 0.0f, -1.0f}, 0.5f,
+        std::make_shared<lambertian>(glm::vec3{0.7f, 0.3f, 0.3f})));
 
     world.add(std::make_shared<sphere>(
-        glm::vec3{0, -100.5, -1}, 100,
-        std::make_shared<lambertian>(glm::vec3{0.8, 0.8, 0.0})));
+        glm::vec3{0.0f, -100.5f, -1.0f}, 100.0f,
+        std::make_shared<lambertian>(glm::vec3{0.8f, 0.8f, 0.0f})));
 
     world.add(std::make_shared<sphere>(
-        glm::vec3{1, 0, -1}, 0.5,
-        std::make_shared<metal>(glm::vec3{0.8, 0.6, 0.2})));
+        glm::vec3{1.0f, 0.0f, -1.0f}, 0.5f,
+        std::make_shared<metal>(glm::vec3{0.8f, 0.6f, 0.2f})));
     
     world.add(std::make_shared<sphere>(
-        glm::vec3{-1, 0, -1}, 0.5,
-        std::make_shared<metal>(glm::vec3{0.8, 0.8, 0.8})));
+        glm::vec3{-1.0f, 0.0f, -1.0f}, 0.5f,
+        std::make_shared<metal>(glm::vec3{0.8f, 0.8f, 0.8f})));
 
    p3_renderer{
         std::move(world),
