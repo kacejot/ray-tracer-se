@@ -1,6 +1,6 @@
 #pragma once
 
-constexpr int image_width = 1000;
-constexpr int image_height = 500;
-constexpr int samples_per_pixel = 100;
-constexpr int max_depth = 50;
+constexpr int IMAGE_WIDTH = 1000;
+constexpr int IMAGE_HEIGHT = 500;
+constexpr int SAMPLES_PER_PIXEL = 100;
+constexpr int MAX_DEPTH = 50;
