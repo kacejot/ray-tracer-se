@@ -1,15 +1,20 @@
 #pragma once
 
+#include <memory>
+
 #include <glm/geometric.hpp>
 #include <glm/vec3.hpp>
 
 #include "ray.h"
+
+#include "material.h"
 
 struct hit_record {
     float t;
     glm::vec3 p;
     glm::vec3 normal;
     bool front_face;
+    std::shared_ptr<material> mat_ptr;
 
     void set_face_normal(const ray& r, const glm::vec3& outward_normal) {
         front_face = glm::dot(r.direction, outward_normal) < 0;

@@ -2,6 +2,8 @@
 #include <fstream>
 #include <random>
 
+#include "materials/lambertian.h"
+#include "materials/metal.h"
 #include "hittable_list.h"
 #include "constants.h"
 #include "sphere.h"
@@ -15,9 +17,18 @@ int main() {
     file.open("image.ppm");
 
     hittable_list world;
-    world.add(std::make_shared<sphere>(glm::vec3{0, 0, -1}, 0.5f));
-//    world.add(std::make_shared<sphere>(glm::vec3{0.15f, 0, -1.0f}, 0.1f));
-    world.add(std::make_shared<sphere>(glm::vec3{0, -100.5f, -1}, 100.0f));
+
+    world.add(std::make_shared<sphere>(
+        glm::vec3(0,0,-1), 0.5, std::make_shared<lambertian>(glm::vec3(0.7, 0.3, 0.3))));
+
+    world.add(std::make_shared<sphere>(
+        glm::vec3(0,-100.5,-1), 100, std::make_shared<lambertian>(glm::vec3(0.8, 0.8, 0.0))));
+
+    world.add(std::make_shared<sphere>(
+        glm::vec3(1,0,-1), 0.5, std::make_shared<metal>(glm::vec3(0.8, 0.6, 0.2))));
+    
+    world.add(std::make_shared<sphere>(
+        glm::vec3(-1,0,-1), 0.5, std::make_shared<metal>(glm::vec3(0.8, 0.8, 0.8))));
 
     file << "P3\n" << image_width << " " << image_height << "\n255\n";
     for (int j = image_height-1; j >= 0; --j) {
@@ -32,6 +43,7 @@ int main() {
 				color += c;
             }
             color /= float(samples_per_pixel);
+            gamma_correct(color, 0.5f);
             write_vec3(file, color);
         }
     }

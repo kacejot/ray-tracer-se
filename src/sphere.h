@@ -6,8 +6,9 @@
 #include "hittable.h"
 
 struct sphere: public hittable {
-    sphere(const glm::vec3& center, const float radius) : center(center), radius(radius) {}
-  
+    sphere(const glm::vec3& center, const float radius, std::shared_ptr<material> m) : center(center), radius(radius), mat_ptr(m) {}
+
+    std::shared_ptr<material> mat_ptr;
     glm::vec3 center;
     float radius;
 
@@ -29,6 +30,7 @@ bool sphere::hit(const ray& r, float t_min, float t_max, hit_record& rec) const 
             rec.t = temp;
 			rec.p = r.at(rec.t);
 			rec.set_face_normal(r, glm::normalize(rec.p - center));
+            rec.mat_ptr = mat_ptr;
 			return true;
         }
         
@@ -37,6 +39,7 @@ bool sphere::hit(const ray& r, float t_min, float t_max, hit_record& rec) const 
             rec.t = temp;
 			rec.p = r.at(rec.t);
 			rec.set_face_normal(r, glm::normalize(rec.p - center));
+            rec.mat_ptr = mat_ptr;
 			return true;
         }
     }
