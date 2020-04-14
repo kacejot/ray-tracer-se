@@ -18,20 +18,20 @@ int main() {
     hittable_list world;
 
     world.add(std::make_shared<sphere>(
-        glm::vec3{0.0f, 0.0f, -1.0f}, 0.5f,
-        std::make_shared<lambertian>(glm::vec3{0.7f, 0.3f, 0.3f})));
+        vec3{0.0f, 0.0f, -1.0f}, 0.5f,
+        std::make_shared<lambertian>(vec3{0.7f, 0.3f, 0.3f})));
 
     world.add(std::make_shared<sphere>(
-        glm::vec3{0.0f, -100.5f, -1.0f}, 100.0f,
-        std::make_shared<lambertian>(glm::vec3{0.8f, 0.8f, 0.0f})));
+        vec3{0.0f, -100.5f, -1.0f}, 100.0f,
+        std::make_shared<lambertian>(vec3{0.8f, 0.8f, 0.0f})));
 
     world.add(std::make_shared<sphere>(
-        glm::vec3{1.0f, 0.0f, -1.0f}, 0.5f,
-        std::make_shared<metal>(glm::vec3{0.8f, 0.6f, 0.2f})));
+        vec3{1.0f, 0.0f, -1.0f}, 0.5f,
+        std::make_shared<metal>(vec3{0.8f, 0.6f, 0.2f})));
     
     world.add(std::make_shared<sphere>(
-        glm::vec3{-1.0f, 0.0f, -1.0f}, 0.5f,
-        std::make_shared<metal>(glm::vec3{0.8f, 0.8f, 0.8f})));
+        vec3{-1.0f, 0.0f, -1.0f}, 0.5f,
+        std::make_shared<metal>(vec3{0.8f, 0.8f, 0.8f})));
 
    p3_renderer{
         std::move(world),

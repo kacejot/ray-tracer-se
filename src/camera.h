@@ -15,5 +15,5 @@ struct camera {
         horizontal{4.0, 0.0, 0.0},
         vertical{0.0, 2.0, 0.0} {}
 
-    ray cast_ray(float u, float v);
+    ray cast_ray(double u, double v);
 };

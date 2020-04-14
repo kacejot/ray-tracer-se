@@ -8,7 +8,7 @@ struct ray {
     vec3 origin;
     vec3 direction;
 
-    vec3 at(float t) const {
+    vec3 at(double t) const {
         return origin + t * direction;
     }
 };

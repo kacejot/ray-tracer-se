@@ -1,7 +1,7 @@
 #include "hittable_list.h"
 #include "hit_record.h"
 
-bool hittable_list::hit(const ray& r, float t_min, float t_max, hit_record& rec) const {
+bool hittable_list::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
     hit_record temp_rec;
     bool hit_anything = false;
     auto closest_so_far = t_max;

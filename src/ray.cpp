@@ -1,5 +1,3 @@
-#include <glm/geometric.hpp>
-
 #include "hit_record.h"
 #include "material.h"
 #include "hittable.h"
@@ -14,7 +12,7 @@ vec3 ray_color(const ray& r, const hittable& world, const int depth) {
     }
         
     hit_record rec;
-    if (world.hit(r, 0.0f, std::numeric_limits<float>::infinity(), rec)) {
+    if (world.hit(r, 0.0f, std::numeric_limits<double>::infinity(), rec)) {
         ray scattered;
         vec3 attenuation;
         if (rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
@@ -31,5 +29,5 @@ vec3 ray_color(const ray& r, const hittable& world, const int depth) {
 }
 
 vec3 reflect(const vec3& v, const vec3& n) {
-    return v - 2 * glm::dot(v,n) * n;
+    return v - 2 * dot(v,n) * n;
 }
