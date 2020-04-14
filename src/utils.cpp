@@ -43,6 +43,16 @@ vec3 random_vec_in_hemisphere(const vec3& normal) {
         return -in_unit_sphere;
 }
 
+vec3 random_in_unit_disk() {
+    while (true) {
+        auto p = vec3{random_double_ranged(-1.0, 1.0), random_double_ranged(-1.0, 1.0), 0};
+        if (p.length_squared() >= 1) {
+            continue;
+        }
+        return p;
+    }
+}
+
 vec3 random_unit_vector() {
     auto a = random_double_ranged(0, 2 * pi);
     auto z = random_double_ranged(-1, 1);

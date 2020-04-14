@@ -8,12 +8,10 @@ struct camera {
     vec3 lower_left_corner;
     vec3 horizontal;
     vec3 vertical;
+    vec3 u, v, w;
+    double lens_radius;
 
-    camera() :
-        origin{0.0, 0.0, 0.0},
-        lower_left_corner{-2.0, -1.0, -1.0},
-        horizontal{4.0, 0.0, 0.0},
-        vertical{0.0, 2.0, 0.0} {}
+    camera(vec3 lookfrom, vec3 lookat, vec3 vup, double vfov, double aspect, double aperture, double focus_dist);
 
     ray cast_ray(double u, double v);
 };
