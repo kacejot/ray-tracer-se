@@ -1,6 +1,7 @@
 #include <fstream>
 
 #include "materials/lambertian.h"
+#include "materials/dielectric.h"
 #include "materials/metal.h"
 #include "hittable_list.h"
 #include "constants.h"
@@ -10,6 +11,7 @@
 
 int main() {
     using materials::lambertian;
+    using materials::dielectric;
     using materials::metal;
 
     std::ofstream file;
@@ -18,20 +20,20 @@ int main() {
     hittable_list world;
 
     world.add(std::make_shared<sphere>(
-        vec3{0.0f, 0.0f, -1.0f}, 0.5f,
-        std::make_shared<lambertian>(vec3{0.7f, 0.3f, 0.3f})));
+        vec3{0.0, 0.0, -1.0}, 0.5,
+        std::make_shared<lambertian>(vec3{0.7, 0.3, 0.3})));
 
     world.add(std::make_shared<sphere>(
-        vec3{0.0f, -100.5f, -1.0f}, 100.0f,
-        std::make_shared<lambertian>(vec3{0.8f, 0.8f, 0.0f})));
+        vec3{0.0, -100.5, -1.0}, 100.0,
+        std::make_shared<lambertian>(vec3{0.8, 0.8, 0.0})));
 
     world.add(std::make_shared<sphere>(
-        vec3{1.0f, 0.0f, -1.0f}, 0.5f,
-        std::make_shared<metal>(vec3{0.8f, 0.6f, 0.2f})));
-    
+        vec3{1.0, 0.0, -1.0}, 0.5,
+        std::make_shared<metal>(vec3{0.8f, 0.8f, 0.8}, 1.0)));
+
     world.add(std::make_shared<sphere>(
-        vec3{-1.0f, 0.0f, -1.0f}, 0.5f,
-        std::make_shared<metal>(vec3{0.8f, 0.8f, 0.8f})));
+        vec3{-1.0, 0.0, -1.0}, 0.5,
+        std::make_shared<dielectric>(1.5)));
 
    p3_renderer{
         std::move(world),

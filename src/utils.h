@@ -19,3 +19,6 @@ vec3 random_unit_vector();
 vec3 linear_gradient(const vec3& from, const vec3& to, const ray& r);
 vec3 sphere_gradient(const hit_record& rec, const hittable& world, const int depth);
 void gamma_correct(vec3& color, const double gamma);
+
+inline double ffmin(double a, double b) { return a <= b ? a : b; }
+inline double ffmax(double a, double b) { return a >= b ? a : b; }
