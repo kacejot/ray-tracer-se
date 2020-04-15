@@ -71,12 +71,12 @@ int main() {
     file.open("image.ppm");
 
     const auto world = random_scene();
-    const auto look_from = vec3{3.0, 3.0, 2.0};
-    const auto look_at = vec3{0.0, 0.0, -1.0};
+    const auto look_from = vec3{13.0, 2.0, 3.0};
+    const auto look_at = vec3{0.0, 0.0, 0.0};
     const auto vup = vec3{0.0, 1.0, 0.0};
     const auto fov = 20;
-    const auto dist_to_focus = (look_from - look_at).length();
-    const auto aperture = 2.0;
+    const auto dist_to_focus = 10.0;
+    const auto aperture = 0.1;
 
     p3_renderer{
         std::move(world),
