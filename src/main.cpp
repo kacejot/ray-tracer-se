@@ -81,6 +81,7 @@ int main() {
     p3_renderer{
         std::move(world),
         camera{look_from, look_at, vup, fov, ASPECT_RATIO, aperture, dist_to_focus},
-        file
-    }.render(IMAGE_WIDTH, IMAGE_HEIGHT, SAMPLES_PER_PIXEL, MAX_DEPTH);
+        file,
+        IMAGE_WIDTH, IMAGE_HEIGHT, SAMPLES_PER_PIXEL, MAX_DEPTH
+    }.render();
 }
